@@ -5,8 +5,25 @@
 #include <sstream>
 #include <string>
 
-int add(int num1, int num2){
+int add(int num1, int num2) {
     return num1 + num2;
+}
+
+void read_csv() {
+
+	std::fstream file;
+
+	file.open("data/package_file.csv");
+
+	std::string line;
+
+	getline(file, line);
+	while (getline(file, line)){
+		std::cout << line << std::endl;
+
+	}
+
+	file.close();
 }
 
 void read_record() 
@@ -16,13 +33,11 @@ void read_record()
 	std::fstream fin; 
 
 	// Open an existing file 
-	fin.open("reportcard.csv", std::ios::in); 
+	fin.open("package_file.csv", std::ios::in); 
 
-	// Get the roll number 
-	// of which the data is required 
+	// Get the roll number of which the data is required 
 	int rollnum, roll2, count = 0; 
-	std::cout << "Enter the roll number "
-		<< "of the student to display details: "; 
+	std::cout << "Enter the roll number of the student to display details: "; 
 	std::cin >> rollnum; 
 
 	// Read the Data from the file 
@@ -43,7 +58,8 @@ void read_record()
 
 		// read every column data of a row and 
 		// store it in a string variable, 'word' 
-		while (getline(s, word, ', ')) { 
+		while (getline(s, word)) { 
+		// while (getline(s, word, ', ')) { 
 
 			// add all the column data 
 			// of a row to a vector 
@@ -64,6 +80,8 @@ void read_record()
 			std::cout << "Physics: " << row[3] << "\n"; 
 			std::cout << "Chemistry: " << row[4] << "\n"; 
 			std::cout << "Biology: " << row[5] << "\n"; 
+			std::cout << "Chemistry: " << row[6] << "\n"; 
+			std::cout << "Biology: " << row[7] << "\n"; 
 			break; 
 		} 
 	} 
