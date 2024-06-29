@@ -5,86 +5,107 @@
 #include <sstream>
 #include <string>
 
-int add(int num1, int num2) {
-    return num1 + num2;
-}
+class ParseCsvData {
 
-void read_csv() {
+    private:
 
-	std::fstream file;
+        const std::string SUBDIRECTORY = "data/";
+        const std::string PACKAGE_FILE = "package_file.csv";
+        const std::string DISTANCE_TABLE = "distance_table.csv";
 
-	file.open("data/package_file.csv");
+    public:
 
-	std::string line;
+        std::vector<std::string> getPackageData() {
 
-	getline(file, line);
-	while (getline(file, line)){
-		std::cout << line << std::endl;
+            // Define variables
+            std::fstream file;
+            std::vector<std::string> record; 
+            std::string line;
 
-	}
+            // Open the defined file
+            file.open(SUBDIRECTORY + PACKAGE_FILE);
 
-	file.close();
-}
+            // Read the file line by line
+            while (getline(file, line)){
+                record.push_back(line);
+            }
 
-void read_record() 
-{ 
+            // Close the file
+            file.close();
 
-	// File pointer 
-	std::fstream fin; 
+            // Return the record vector
+            return record;
+        } 
 
-	// Open an existing file 
-	fin.open("package_file.csv", std::ios::in); 
+        std::vector<std::string> getDistanceData() {
 
-	// Get the roll number of which the data is required 
-	int rollnum, roll2, count = 0; 
-	std::cout << "Enter the roll number of the student to display details: "; 
-	std::cin >> rollnum; 
+            // Define variables
+            std::fstream file;
+            std::vector<std::string> record; 
+            std::string line;
 
-	// Read the Data from the file 
-	// as String Vector 
-	std::vector<std::string> row; 
-	std::string line, word, temp; 
+            // Open the defined file
+            file.open(SUBDIRECTORY + DISTANCE_TABLE);
 
-	while (fin >> temp) { 
+            // Read the file line by line
+            while (getline(file, line)){
+                record.push_back(line);
+            }
 
-		row.clear(); 
+            // Close the file
+            file.close();
 
-		// read an entire row and 
-		// store it in a string variable 'line' 
-		getline(fin, line); 
+            // Return the record vector
+            return record;
+        } 
 
-		// used for breaking words 
-		std::stringstream s(line); 
+        std::vector<std::string> getDistanceNameData() {
 
-		// read every column data of a row and 
-		// store it in a string variable, 'word' 
-		while (getline(s, word)) { 
-		// while (getline(s, word, ', ')) { 
+            // Define variables
+            std::fstream file;
+            std::vector<std::string> record; 
+            std::string line;
 
-			// add all the column data 
-			// of a row to a vector 
-			row.push_back(word); 
-		} 
+            // Open the defined file
+            file.open(SUBDIRECTORY + DISTANCE_TABLE);
 
-		// convert string to integer for comparision 
-		roll2 = stoi(row[0]); 
+            // Read the file line by line
+            while (getline(file, line)){
+                record.push_back(line);
+            }
 
-		// Compare the roll number 
-		if (roll2 == rollnum) { 
+            // Close the file
+            file.close();
 
-			// Print the found data 
-			count = 1; 
-			std::cout << "Details of Roll " << row[0] << " : \n"; 
-			std::cout << "Name: " << row[1] << "\n"; 
-			std::cout << "Maths: " << row[2] << "\n"; 
-			std::cout << "Physics: " << row[3] << "\n"; 
-			std::cout << "Chemistry: " << row[4] << "\n"; 
-			std::cout << "Biology: " << row[5] << "\n"; 
-			std::cout << "Chemistry: " << row[6] << "\n"; 
-			std::cout << "Biology: " << row[7] << "\n"; 
-			break; 
-		} 
-	} 
-	if (count == 0) 
-		std::cout << "Record not found\n"; 
-} 
+            // Return the record vector
+            return record;
+        } 
+
+        // std::string line, word, token, delimiter = ",";
+        // size_t pos = 0;
+
+        // Method to split csv data in each row.
+        // std::vector<std::string> split (const std::string &s, char delim) {
+        //     std::vector<std::string> result;
+        //     std::stringstream ss (s);
+        //     std::string item;
+
+        //     while (getline (ss, item, delim)) {
+        //         result.push_back (item);
+        //     }
+
+        //     return result;
+        // }
+
+            // Get each data item in a row of data.
+            // for (int rowNum = 0; rowNum < record.size(); rowNum++){
+
+            //     // std::cout << record[rowNum] << std::endl;
+
+            //     std::vector<std::string> v = split (record[rowNum], ',');
+            //     std::cout << "------------------------------\n";
+
+            //     for (auto i : v) std::cout << i << std::endl;
+            // }
+
+};
