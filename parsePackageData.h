@@ -10,76 +10,132 @@ class ParseCsvData {
     private:
 
         const std::string SUBDIRECTORY = "data/";
-        const std::string PACKAGE_FILE = "package_file.csv";
+        const std::string PACKAGE_TABLE = "package_file.csv";
         const std::string DISTANCE_TABLE = "distance_table.csv";
+
+        // Method to split csv data in each row.
+        std::vector<std::string> split (const std::string &s, char delim) {
+            std::vector<std::string> result;
+            std::stringstream ss (s);
+            std::string item;
+
+            while (getline (ss, item, delim)) {
+                result.push_back (item);
+            }
+
+            return result;
+        }
+
+        std::vector<std::vector<std::string>> convertCsvFileTo2dVector(std::string filename) {
+
+            // Define variables
+            std::fstream file;
+            std::vector<std::string> record;
+			std::vector<std::vector<std::string>> csv_vector;
+            std::string line;
+
+            // Open the defined file
+            file.open(SUBDIRECTORY + filename);
+
+            // Read the file line by line
+            while (getline(file, line)){
+                record.push_back(line);
+			}
+
+			// Get each data item in a row of data.
+			for (int rowNum = 0; rowNum < record.size(); rowNum++){
+
+				std::vector<std::string> row = split (record[rowNum], ',');
+
+                csv_vector.push_back(row);
+			}
+
+            // Close the file
+            file.close();
+
+            // Return the record vector
+            return csv_vector;
+        } 
 
     public:
 
-        std::vector<std::string> getPackageData() {
+        std::vector<std::vector<std::string>> getPackageData() {
 
-            // Define variables
-            std::fstream file;
-            std::vector<std::string> record; 
-            std::string line;
+            return convertCsvFileTo2dVector(PACKAGE_TABLE);
+            
+        }
 
-            // Open the defined file
-            file.open(SUBDIRECTORY + PACKAGE_FILE);
+        std::vector<std::vector<std::string>> getDistanceData() {
 
-            // Read the file line by line
-            while (getline(file, line)){
-                record.push_back(line);
-            }
+            return convertCsvFileTo2dVector(DISTANCE_TABLE);
+            
+        }
 
-            // Close the file
-            file.close();
 
-            // Return the record vector
-            return record;
-        } 
+        // std::vector<std::vector<std::string>> getDistanceNameData() {
 
-        std::vector<std::string> getDistanceData() {
+        //     return convertCsvFileTo2dVector(DISTANCE_TABLE);
 
-            // Define variables
-            std::fstream file;
-            std::vector<std::string> record; 
-            std::string line;
+        // }
 
-            // Open the defined file
-            file.open(SUBDIRECTORY + DISTANCE_TABLE);
+            // // Define variables
+            // std::fstream file;
+            // std::vector<std::string> record; 
+            // std::vector<std::string> w;
+			// std::vector<std::vector<std::string>> csv_vector;
+            // std::string line;
 
-            // Read the file line by line
-            while (getline(file, line)){
-                record.push_back(line);
-            }
+            // // Open the defined file
+            // file.open(SUBDIRECTORY + DISTANCE_TABLE);
 
-            // Close the file
-            file.close();
+            // // Read the file line by line
+            // while (getline(file, line)){
+            //     record.push_back(line);
+            // }
 
-            // Return the record vector
-            return record;
-        } 
+			// // Get each data item in a row of data.
+			// for (int rowNum = 0; rowNum < record.size(); rowNum++){
 
-        std::vector<std::string> getDistanceNameData() {
+			// 	// std::cout << record[rowNum] << std::endl;
 
-            // Define variables
-            std::fstream file;
-            std::vector<std::string> record; 
-            std::string line;
+			// 	std::vector<std::string> v = split (record[rowNum], ',');
 
-            // Open the defined file
-            file.open(SUBDIRECTORY + DISTANCE_TABLE);
+            //     // for (int i = 0; i < 3; i++){
+            //     csv_vector.push_back(v);
+            //     // }
+			// }
+            
+            // // for (int i = 0; i < w.size(); i++){
+            // //     std::cout << w[i] << std::endl;
+            // // }
 
-            // Read the file line by line
-            while (getline(file, line)){
-                record.push_back(line);
-            }
+            // // Close the file
+            // file.close();
 
-            // Close the file
-            file.close();
+            // // Return the record vector
+            // return csv_vector;
 
-            // Return the record vector
-            return record;
-        } 
+        // std::vector<std::string> getDistanceNameData() {
+
+        //     // Define variables
+        //     std::fstream file;
+        //     std::vector<std::string> record; 
+        //     std::string line;
+
+        //     // Open the defined file
+        //     file.open(SUBDIRECTORY + DISTANCE_TABLE);
+
+        //     // Read the file line by line
+        //     while (getline(file, line)){
+        //         record.push_back(line);
+        //     }
+
+        //     // Close the file
+        //     file.close();
+
+        //     // Return the record vector
+        //     return record;
+        // } 
 
         // std::string line, word, token, delimiter = ",";
         // size_t pos = 0;
