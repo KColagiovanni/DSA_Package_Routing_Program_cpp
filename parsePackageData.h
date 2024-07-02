@@ -70,8 +70,14 @@ class ParseCsvData {
             return convertCsvFileTo2dVector(DISTANCE_TABLE);
             
         }
+};
 
+class Packages : public ParseCsvData {
 
+    std::vector<std::string> getPackageData() {
+        
+    }
+};
         // std::vector<std::vector<std::string>> getDistanceNameData() {
 
         //     return convertCsvFileTo2dVector(DISTANCE_TABLE);
@@ -163,5 +169,3 @@ class ParseCsvData {
 
             //     for (auto i : v) std::cout << i << std::endl;
             // }
-
-};
