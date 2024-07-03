@@ -11,11 +11,15 @@ class HashTable {
         return key % TABLESIZE;
     }
 
-    hashTable addPackage(int key, std::vector<std::string> value) {
+    void addPackage(int key, std::vector<std::string> value) {
         hashTable kvPair;
         kvPair.key = createKey(key);
         kvPair.value = value;
-
-        return kvPair;
     }
+
+    // hashTable lookupItem(int key) {
+    //     hashTable kvPair;
+    //     return kvPair.value;
+    // }
+
 };

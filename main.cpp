@@ -1,3 +1,5 @@
+// To compile in linux "g++ main.cpp && ./a.out"
+
 #include <iostream>
 #include <algorithm>
 #include <vector>
@@ -42,8 +44,9 @@ int main(){
             break;
         } else if (user_input == "3") {
             std::cout << "Displaying all package info\n";
-            ParseCsvData pcd;
-            std::vector<std::vector<std::string>> output = pcd.getPackageData();
+            Packages pak;
+            
+            std::vector<std::string> output = pak.getPackageData();
             for (int i = 0; i < output.size(); i++){
 				std::cout << "----------------------------------------------------------------------------------------------------------\n";
                 for (int j = 0; j < 8; j++){
@@ -59,7 +62,7 @@ int main(){
         } else if (user_input == "4") {
             std::cout << "Displaying all distance name info\n";
             ParseCsvData pcd;
-            std::vector<std::vector<std::string>> output = pcd.getDistanceData();
+            std::vector<std::vector<std::string>> output = pcd.getDistanceDataFromCsvFile();
             for (int i = 0; i < output.size(); i++){
 				std::cout << "-----------------------------------------------------------------------\n";
                 for (int j = 0; j < 3; j++){
@@ -75,7 +78,7 @@ int main(){
         } else if (user_input == "5") {
             std::cout << "Displaying all distance info\n";
             ParseCsvData pcd;
-            std::vector<std::vector<std::string>> output = pcd.getDistanceData();
+            std::vector<std::vector<std::string>> output = pcd.getDistanceDataFromCsvFile();
             for (int i = 0; i < output.size(); i++){
                 for (int j = 3; j < output[i].size(); j++){
                     if (j < output[i].size() - 1){
