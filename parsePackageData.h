@@ -4,6 +4,7 @@
 #include <vector>
 #include <sstream>
 #include <string>
+// #include "hashTable.h"
 
 class ParseCsvData {
 
@@ -83,10 +84,15 @@ class Packages : public ParseCsvData {
 
             std::cout << "packageData.size() is: " << packageData.size() << std::endl;
             for (int i = 0; i < packageData.size(); i++){
-                for (int j = 0; j < 8; j++){
-                    std::cout << packageData[i][j] << std::endl;
-                } 
+                std::cout << packageData[i][0] << std::endl;
+                // HashTable ht;
+                // ht.addPackage()
+                // for (int j = 0; j < 8; j++){
+                //     std::cout << packageData[i][j] << std::endl;
+
+                // } 
             }
+            return packageData[0];
         }
 };
         // std::vector<std::vector<std::string>> getDistanceNameData() {
