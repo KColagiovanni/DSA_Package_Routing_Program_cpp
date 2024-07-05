@@ -28,6 +28,7 @@ int main(){
     std::cout << "     Press 4 to display all package info.\n";
     std::cout << "     Press 5 to display all distance name info.\n";
     std::cout << "     Press 6 to display all distance info.\n";
+    std::cout << "     Press 7 create a table.\n";
     std::cout << "     Type 'quit' at any time to quit the program.\n";
     
     std::string user_input;
@@ -48,21 +49,21 @@ int main(){
             std::cout << "What is the package ID of the package to be displayed?: ";
             std::cin >> packageNumToDisplay;
             Packages pak;
-            HashTable ht;
+            HashTableClass ht;
             pak.addPackageDataToHashTable();
-            if (stoi(packageNumToDisplay) > 0 and stoi(packageNumToDisplay) <= ht.TABLESIZE) {
-                std::cout << "In the for loop" << std::endl;
-                std::vector<std::string> record = ht.lookupItem(stoi(packageNumToDisplay));
-                std::cout << "record.size() is: " << record.size() << std::endl;
-                for (int i = 0; i < record.size(); i++) {
-                    std::cout << "i is: " << i << std::endl;
-                    if (i < 7){
-                        std::cout << record[i] << ", ";
-                    } else {
-                        std::cout << record[i] << std::endl;
-                    }
-                }
-            }
+            // if (stoi(packageNumToDisplay) > 0 and stoi(packageNumToDisplay) <= ht.CAPACITY) {
+            //     std::cout << "In the for loop" << std::endl;
+            //     std::vector<std::string> record = ht.lookupItem(stoi(packageNumToDisplay));
+            //     std::cout << "record.size() is: " << record.size() << std::endl;
+            //     for (int i = 0; i < record.size(); i++) {
+            //         std::cout << "i is: " << i << std::endl;
+            //         if (i < 7){
+            //             std::cout << record[i] << ", ";
+            //         } else {
+            //             std::cout << record[i] << std::endl;
+            //         }
+            //     }
+            // }
             break;
         } else if (user_input == "4") {
             std::cout << "Displaying all package info\n";
@@ -112,6 +113,10 @@ int main(){
                 std::cout << "\n";
             }
             break;
+        } else if (user_input == "7") {
+            HashTableClass ht;
+            ht.create_table(ht.CAPACITY);
+            std::cout << "A table os size: " << ht.CAPACITY << " has been created" << std::endl;
         } else if (user_input == "quit") {
             std::cout << "Quiting the program\n";
             return 0;

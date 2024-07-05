@@ -78,7 +78,7 @@ class Packages : public ParseCsvData {
     public:
 
         ParseCsvData pcd;
-        HashTable ht;
+        HashTableClass ht;
 
         void addPackageDataToHashTable() {
         // std::vector<std::vector<std::string>> addPackageDataToHashTable() {
@@ -92,7 +92,7 @@ class Packages : public ParseCsvData {
                     rowData.push_back(packageData[i][j]);
                 }
                 std::cout << "Adding Package ID: " << packageData[i][0] << " to Hash Table" << std::endl;
-                ht.addPackage(i + 1, rowData);
+                // ht.addPackage(i + 1, rowData);
                 rowData.clear();
             }
             // return packageData;
