@@ -76,24 +76,26 @@ class ParseCsvData {
 class Packages : public ParseCsvData {
 
     public:
-        std::vector<std::string> addPackageDataToHashTable() {
-            
-            ParseCsvData pcd;
-            HashTable ht;
 
+        ParseCsvData pcd;
+        HashTable ht;
+
+        void addPackageDataToHashTable() {
+        // std::vector<std::vector<std::string>> addPackageDataToHashTable() {
+            
             std::vector<std::vector<std::string>> packageData = pcd.getPackageDataFromCsvFile();
             std::vector<std::string> rowData;
 
-            std::cout << "packageData.size() is: " << packageData.size() << std::endl;
+            std::cout << "packageData.size()  from addPackageDataToHastTable is: " << packageData.size() << std::endl;
             for (int i = 0; i < packageData.size(); i++){
                 for (int j = 0; j < 8; j++){
                     rowData.push_back(packageData[i][j]);
                 }
                 std::cout << "Adding Package ID: " << packageData[i][0] << " to Hash Table" << std::endl;
-                ht.addPackage(i, rowData);
+                ht.addPackage(i + 1, rowData);
                 rowData.clear();
             }
-            return packageData[0];
+            // return packageData;
         }
 
 };

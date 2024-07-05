@@ -47,13 +47,15 @@ int main(){
             std::string packageNumToDisplay;
             std::cout << "What is the package ID of the package to be displayed?: ";
             std::cin >> packageNumToDisplay;
-            HashTable ht;
             Packages pak;
+            HashTable ht;
             pak.addPackageDataToHashTable();
             if (stoi(packageNumToDisplay) > 0 and stoi(packageNumToDisplay) <= ht.TABLESIZE) {
                 std::cout << "In the for loop" << std::endl;
-                std::vector<std::string> record = ht.lookupItem(stoi(packageNumToDisplay)); //Thi sreturns a map, not a vector!!!
+                std::vector<std::string> record = ht.lookupItem(stoi(packageNumToDisplay));
+                std::cout << "record.size() is: " << record.size() << std::endl;
                 for (int i = 0; i < record.size(); i++) {
+                    std::cout << "i is: " << i << std::endl;
                     if (i < 7){
                         std::cout << record[i] << ", ";
                     } else {
@@ -66,7 +68,7 @@ int main(){
             std::cout << "Displaying all package info\n";
             Packages pak;
 
-            std::vector<std::string> output = pak.addPackageDataToHashTable();
+            pak.addPackageDataToHashTable();
             // for (int i = 0; i < output.size(); i++){
 			// 	std::cout << "----------------------------------------------------------------------------------------------------------\n";
             //     for (int j = 0; j < 8; j++){
